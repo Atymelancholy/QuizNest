@@ -1,0 +1,537 @@
+/* Modern Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background: #ffffff; /* Белый фон */
+    backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(0, 120, 255, 0.15); /* Легкая голубая граница */
+    padding: 2rem 0;
+    transition: transform 0.3s cubic-bezier(0.77,0,0.175,1), all 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+/* Hide sidebar when quiz is in fullscreen */
+body.quiz-fullscreen .sidebar,
+body.quiz-fullscreen .sidebar-toggle {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+    padding: 0 2rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 120, 255, 0.15);
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.sidebar-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, #0078ff, #00a2ff);
+    border-radius: 1px;
+}
+
+.sidebar-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0078ff; /* Синий цвет */
+    margin-bottom: 0.5rem;
+}
+
+.user-info {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(0, 120, 255, 0.05); /* Очень светлый синий фон */
+    border-radius: 12px;
+    border: 1px solid rgba(0, 120, 255, 0.1);
+}
+
+.user-name {
+    font-weight: 600;
+    color: #0078ff; /* Синий цвет */
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+}
+
+.user-role {
+    font-size: 0.9rem;
+    color: #0078ff; /* Синий цвет */
+    padding: 0.3rem 0.8rem;
+    background: rgba(0, 120, 255, 0.08);
+    border-radius: 15px;
+    border: 1px solid rgba(0, 120, 255, 0.15);
+    display: inline-block;
+}
+
+/* Navigation Menu */
+.sidebar-nav {
+    padding: 0 1rem;
+    flex: 1;
+}
+
+.nav-section {
+    margin-bottom: 2rem;
+}
+
+.nav-section-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #0078ff; /* Синий цвет */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+}
+
+.nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    margin-bottom: 0.5rem;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    color: #0078ff; /* Синий цвет */
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    font-weight: 500;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+    transparent,
+    rgba(0, 120, 255, 0.1),
+    transparent);
+    transition: left 0.5s ease;
+}
+
+.nav-link:hover::before {
+    left: 100%;
+}
+
+.nav-link:hover {
+    background: rgba(0, 120, 255, 0.08); /* Светло-голубой при наведении */
+    color: #0056cc; /* Более темный синий при наведении */
+    transform: translateX(5px);
+    box-shadow: var(--shadow-md);
+}
+
+.nav-link.active {
+    background: rgba(0, 120, 255, 0.08);
+    color: #0056cc;
+    border: 1px solid rgba(0, 120, 255, 0.2);
+    box-shadow: var(--shadow-md);
+}
+
+.nav-icon {
+    font-size: 1.2rem;
+    width: 20px;
+    text-align: center;
+    color: #0078ff; /* Синий цвет */
+}
+
+/* Role Toggle */
+.role-toggle {
+    padding: 1rem 2rem;
+    border-top: 1px solid rgba(0, 120, 255, 0.15);
+    margin-top: auto;
+}
+
+.role-toggle-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #0078ff; /* Синий цвет */
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.role-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.role-btn {
+    flex: 1;
+    padding: 0.7rem;
+    border: 1px solid rgba(0, 120, 255, 0.15);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #0078ff; /* Синий цвет */
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.role-btn:hover {
+    background: rgba(0, 120, 255, 0.08);
+    color: #0056cc;
+    transform: translateY(-2px);
+}
+
+.role-btn.active {
+    background: #0078ff;
+    color: white;
+    border-color: #0078ff;
+}
+
+/* Logout Button */
+.logout-btn {
+    width: calc(100% - 2rem);
+    margin: 1rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #0078ff, #ff6b81);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.logout-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent);
+    transition: left 0.5s ease;
+}
+
+.logout-btn:hover::before {
+    left: 100%;
+}
+
+.logout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Mobile Toggle */
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1001;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 120, 255, 0.2);
+    border-radius: 12px;
+    padding: 0.8rem;
+    color: #0078ff; /* Синий цвет */
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+    background: rgba(0, 120, 255, 0.08);
+    color: #0056cc;
+    transform: scale(1.1);
+}
+
+/* Enhanced Sidebar Title */
+#title h2 {
+    color: #0078ff; /* Синий цвет */
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 var(--space-sm) 0;
+    padding-bottom: var(--space-xs);
+    border-bottom: 2px solid #0078ff;
+    width: calc(100% - 12px);
+    position: relative;
+}
+
+#title h2::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #0078ff, rgba(0, 120, 255, 0.5));
+    border-radius: var(--radius-sm);
+}
+
+/* Enhanced Navigation Links */
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    width: 100%;
+    flex: 1;
+    padding-top: var(--space-sm);
+}
+
+.sidebar a {
+    color: #0078ff; /* Синий цвет */
+    text-decoration: none;
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all var(--transition-normal);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    border-radius: var(--radius-md);
+    width: calc(100% - 6px);
+    margin-left: 3px;
+    margin-bottom: var(--space-xs);
+    position: relative;
+    background: transparent;
+    border: 1px solid transparent;
+    min-height: 38px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+}
+
+.sidebar a::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: #0078ff;
+    border-radius: 50%;
+    margin-right: var(--space-xs);
+    opacity: 0;
+    transition: all var(--transition-normal);
+    transform: scale(0);
+}
+
+.sidebar a:hover {
+    background: rgba(0, 120, 255, 0.08);
+    color: #0056cc;
+    transform: translateX(4px) scale(1.02);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(0, 120, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.sidebar a:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Enhanced active states for touch devices */
+.sidebar a:active {
+    background: rgba(0, 120, 255, 0.08);
+    transform: translateX(2px) scale(0.98);
+    transition: all 0.1s ease;
+}
+
+/* Premium Dashboard Link Styling */
+.sidebar a.premium-dashboard,
+.sidebar a.intelligence-link {
+    color: #0078ff !important;
+}
+
+.sidebar a.premium-dashboard:hover,
+.sidebar a.intelligence-link:hover {
+    background: rgba(0, 120, 255, 0.08) !important;
+    color: #0056cc !important;
+    border-color: rgba(0, 120, 255, 0.2) !important;
+}
+
+/* Role change buttons */
+.sidebar button:not(.logout-btn) {
+    color: #0078ff; /* Синий цвет */
+    text-decoration: none;
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all var(--transition-normal);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    border-radius: var(--radius-md);
+    width: calc(100% - 6px);
+    margin-left: 3px;
+    margin-bottom: var(--space-sm);
+    margin-top: var(--space-md);
+    position: relative;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 120, 255, 0.15);
+    cursor: pointer;
+    text-align: left;
+    min-height: 38px;
+    justify-content: flex-start;
+}
+
+.sidebar button:not(.logout-btn):hover {
+    background: rgba(0, 120, 255, 0.08);
+    color: #0056cc;
+    transform: translateX(4px) scale(1.02);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(0, 120, 255, 0.2);
+}
+
+/* Toggle Button */
+.sidebar-toggle {
+    background: rgba(255, 255, 255, 0.95);
+    color: #0078ff;
+    border: 1px solid rgba(0, 120, 255, 0.2);
+}
+
+.sidebar-toggle:hover {
+    background: rgba(0, 120, 255, 0.08);
+    color: #0056cc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar-toggle {
+        display: block;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        width: 100%;
+        max-width: 280px;
+        background: white;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+        z-index: 1202 !important;
+        box-shadow: var(--shadow-xl);
+        padding-bottom: 72px;
+    }
+
+    /* Mobile overlay */
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 998;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .sidebar-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Close button for mobile */
+    .close-btn-sidebar {
+        display: flex;
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border-radius: 50%;
+        background: white;
+        color: #0078ff;
+        border: 2px solid rgba(0, 120, 255, 0.2);
+        box-shadow: var(--shadow-sm);
+        z-index: 1203;
+        transition: all 0.3s ease;
+    }
+
+    .close-btn-sidebar:hover {
+        background: rgba(0, 120, 255, 0.08);
+        color: #0056cc;
+        transform: rotate(90deg);
+    }
+}
+
+/* Desktop fix */
+@media (min-width: 769px) {
+    .sidebar {
+        transform: translateX(0) !important;
+        background: white;
+    }
+
+    .sidebar-toggle {
+        display: none !important;
+    }
+
+    .close-btn-sidebar {
+        display: none !important;
+    }
+}
+
+/* Общие стили для всех синих элементов */
+.sidebar .nav-link,
+.sidebar .sidebar-title,
+.sidebar .user-name,
+.sidebar .user-role,
+.sidebar .nav-section-title,
+.sidebar .nav-icon,
+.sidebar .role-toggle-title,
+.sidebar .role-btn,
+.sidebar button:not(.logout-btn),
+.sidebar a,
+#title h2 {
+    color: #0078ff !important; /* Основной синий цвет */
+}
+
+.sidebar .nav-link:hover,
+.sidebar button:not(.logout-btn):hover,
+.sidebar .role-btn:hover,
+.sidebar-toggle:hover,
+.close-btn-sidebar:hover,
+.sidebar a:hover {
+    color: #0056cc !important; /* Более темный синий при наведении */
+    background-color: rgba(0, 120, 255, 0.08) !important;
+}
+
+/* Активные состояния */
+.sidebar .nav-link.active,
+.sidebar .role-btn.active {
+    color: #0056cc !important;
+    background-color: rgba(0, 120, 255, 0.1) !important;
+}
+
+.sidebar .role-btn.active {
+    color: white !important;
+    background-color: #0078ff !important;
+}
