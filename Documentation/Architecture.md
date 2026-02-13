@@ -6,17 +6,17 @@ QuizNest — это клиент-серверное веб-приложение.
 - Тип: интерактивная образовательная платформа с элементами геймификации, адаптивного обучения и реального времени.
 - Подтип: AI-ассистированная система генерации контента и multiplayer-соревнований.
 ### 1.2 Выбрать стратегию развёртывания
-Стратегия: облачное развёртывание с разделением frontend и backend, использованием Redis для кэширования сессий и Socket.IO для real-time.
-Компоненты:
-Frontend: статическая сборка (Vite) — развёртывание на CDN/Render Static Sites
-Backend: Node.js/Express — контейнеризованное развёртывание (Render Web Services)
-База данных: MongoDB Atlas (облачная)
-Кэш и сессии: Redis Cloud (upstash/Redis Labs)
-Real-time: Socket.IO 
-Домены:
-Frontend: https://quiznest.app
-Backend API: https://api.quiznest.app
-WebSocket: wss://api.quiznest.app
+**Стратегия:** облачное развёртывание с разделением frontend и backend, использованием Redis для кэширования сессий и Socket.IO для real-time.
+**Компоненты:**
+- **Frontend:** статическая сборка (Vite) — развёртывание на CDN/Render Static Sites
+- **Backend:** Node.js/Express — контейнеризованное развёртывание (Render Web Services)
+- **База данных:** MongoDB Atlas (облачная)
+- **Кэш и сессии:** Redis Cloud (upstash/Redis Labs)
+- **Real-time:** Socket.IO
+**Домены:**
+- **Frontend:** https://quiznest.app
+- **Backend API:** https://api.quiznest.app
+- **WebSocket:** wss://api.quiznest.app
   
 ### 1.3 Обосновать выбор технологии
 | Компонент           | Технология                         | Обоснование                                                                                                                              |
@@ -80,3 +80,4 @@ WebSocket: wss://api.quiznest.app
 -  Централизованное логирование
 -  Выделение слоя аналитики
 -  Оптимизация производительности UI
+
